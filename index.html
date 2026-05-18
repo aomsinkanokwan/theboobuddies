@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <script>
+    async function redirect() {
+      const slug = window.location.pathname.split("/").pop()
+
+      const response = await fetch('/links.json')
+      const links = await response.json()
+
+      if (links[slug]) {
+        window.location.href = links[slug]
+      } else {
+        document.body.innerHTML = "Not found"
+      }
+    }
+
+    redirect()
+  </script>
+</body>
+</html>
